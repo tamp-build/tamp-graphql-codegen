@@ -36,4 +36,31 @@ public static class GraphQLCodegen
         configure?.Invoke(s);
         return s.ToCommandPlan(tool);
     }
+
+    // ---- Object-init overloads (TAM-161) ----
+    // Two equivalent authoring styles; both produce identical CommandPlans. Fluent
+    // stays canonical in docs and `tamp init` templates; object-init available for
+    // consumers who prefer the C# initializer shape.
+    //
+    //     GraphQLCodegen.Generate(Codegen, new() { Config = "codegen.ts", Overwrite = true });
+    //
+    // is equivalent to:
+    //
+    //     GraphQLCodegen.Generate(Codegen, s => s.SetConfig("codegen.ts").SetOverwrite());
+
+    /// <summary><c>graphql-codegen [flags]</c> — object-init form.</summary>
+    public static CommandPlan Generate(Tool tool, GraphQLCodegenGenerateSettings settings)
+    {
+        if (tool is null) throw new ArgumentNullException(nameof(tool));
+        if (settings is null) throw new ArgumentNullException(nameof(settings));
+        return settings.ToCommandPlan(tool);
+    }
+
+    /// <summary><c>graphql-codegen init</c> — object-init form.</summary>
+    public static CommandPlan Init(Tool tool, GraphQLCodegenInitSettings settings)
+    {
+        if (tool is null) throw new ArgumentNullException(nameof(tool));
+        if (settings is null) throw new ArgumentNullException(nameof(settings));
+        return settings.ToCommandPlan(tool);
+    }
 }
