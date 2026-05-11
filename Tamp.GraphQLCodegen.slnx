@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" /><File Path="LICENSE" /><File Path="MAINTAINERS.md" />
+    <File Path="Directory.Build.props" /><File Path="Directory.Packages.props" />
+    <File Path="global.json" /><File Path=".gitignore" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Tamp.GraphQLCodegen.V5/Tamp.GraphQLCodegen.V5.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Tamp.GraphQLCodegen.V5.Tests/Tamp.GraphQLCodegen.V5.Tests.csproj" />
+    <Project Path="tests/Tamp.GraphQLCodegen.V5.IntegrationTests/Tamp.GraphQLCodegen.V5.IntegrationTests.csproj" />
+  </Folder>
+</Solution>
